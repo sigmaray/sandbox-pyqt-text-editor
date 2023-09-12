@@ -54,7 +54,7 @@ jobs:
                 cd dist/ &&
                 zip -r9 editor editor/
                 # zip -r9 clipster clipster.app/                
-            OUT_FILE_NAME: clipster.zip
+            OUT_FILE_NAME: editor.zip
             ASSET_MIME: application/zip
           # - os: windows-latest
           #   TARGET: windows
