@@ -46,19 +46,19 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: macos-latest
-            TARGET: macos
-            CMD_BUILD: >
-                python3 -m PyInstaller editor.py --noconsole --add-data "icons:icons" --name editor-osx --noconfirm &&
-                cd dist/ &&
-                zip -r9 editor-osx editor-osx/;
-            OUT_FILE_NAME: editor-osx.zip
-            ASSET_MIME: application/zip
+          # - os: macos-latest
+          #   TARGET: macos
+          #   CMD_BUILD: >
+          #       python3 -m PyInstaller editor.py --noconsole --add-data "icons:icons" --name editor-osx --noconfirm &&
+          #       cd dist/ &&
+          #       zip -r9 editor-osx editor-osx/;
+          #   OUT_FILE_NAME: editor-osx.zip
+          #   ASSET_MIME: application/zip
           - os: windows-latest
             TARGET: windows
             CMD_BUILD: >
-              python3 -m PyInstaller editor.py --noconsole --add-data "icons;icons" --name editor-osx --noconfirm --onefile
-              dir
+              python3 -m PyInstaller editor.py --noconsole --add-data "icons;icons" --name editor-osx --noconfirm --onefile;
+              dir;
               dir dist
             OUT_FILE_NAME: editor.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
