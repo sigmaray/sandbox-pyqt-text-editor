@@ -8,6 +8,8 @@ on:
   push:
     # tags:
     #   - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+    tags:
+      - 'z*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
 
@@ -23,10 +25,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        # tag_name: ${{ github.ref }}
-        tag_name: ${{ env.DATE }}
-        # release_name: Release ${{ github.ref }}
-        release_name: Release ${{ env.DATE }}
+        tag_name: ${{ github.ref }}
+        # tag_name: ${{ env.DATE }}
+        release_name: Release ${{ github.ref }}
+        # release_name: Release ${{ env.DATE }}
         draft: false
         prerelease: false
     - name: Output Release URL File
