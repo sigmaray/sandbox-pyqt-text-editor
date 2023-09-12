@@ -52,13 +52,14 @@ jobs:
                 python3 -m PyInstaller editor.py --noconsole --add-data "icons:icons" --name editor-osx --noconfirm &&
                 cd dist/ &&
                 zip -r9 editor-osx editor-osx/;
-                pwd;
-                ls -lah
             OUT_FILE_NAME: editor-osx.zip
             ASSET_MIME: application/zip
           - os: windows-latest
             TARGET: windows
-            CMD_BUILD: python3 -m PyInstaller editor.py --noconsole --add-data "icons;icons" --name editor-osx --noconfirm --onefile
+            CMD_BUILD: >
+              python3 -m PyInstaller editor.py --noconsole --add-data "icons;icons" --name editor-osx --noconfirm --onefile
+              dir
+              dir dist
             OUT_FILE_NAME: editor.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
     steps:
