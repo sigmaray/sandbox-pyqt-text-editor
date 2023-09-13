@@ -8,12 +8,10 @@ on:
 
 jobs:
 
-  createrelease:
+  create-release:
     name: Create Release
     runs-on: [ubuntu-latest]
     steps:
-    - name: Debug
-      run: echo "${{ env.DATE }}"
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -34,7 +32,7 @@ jobs:
 
   build:
     name: Build packages
-    needs: createrelease
+    needs: create-release
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -64,7 +62,7 @@ jobs:
             CMD_BUILD: |
               python3 -m PyInstaller editor.py --noconsole --add-data "icons;icons" --name editor --noconfirm;
               cd dist;
-              7z a editor-windows.zip editor\;
+              7z -x 9 a editor-windows.zip editor\;
             OUT_FILE_NAME: editor-windows.zip
             ASSET_MIME: application/zip
     steps:
