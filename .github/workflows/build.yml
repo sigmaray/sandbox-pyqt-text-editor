@@ -1,15 +1,10 @@
 # https://data-dive.com/multi-os-deployment-in-cloud-using-pyinstaller-and-github-actions/
 name: Build
 
-env:
-  DATE: $(date +'%Y%m%d.%H%M%S')
-
 on:
   push:
-    # tags:
-    #   - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
     tags:
-      - 'z*' # Push events to matching v*, i.e. v1.0, v20.15.10
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
 
@@ -26,9 +21,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
-        # tag_name: ${{ env.DATE }}
         release_name: Release ${{ github.ref }}
-        # release_name: Release ${{ env.DATE }}
         draft: false
         prerelease: false
     - name: Output Release URL File
@@ -46,7 +39,6 @@ jobs:
     strategy:
       matrix:
         include:
-          # - os: macos-latest
           - os: ubuntu-22.04
             TARGET: linux
             CMD_BUILD: >
@@ -67,7 +59,6 @@ jobs:
                 rm -rf build/editor dist/editor
             OUT_FILE_NAME: editor-osx.zip
             ASSET_MIME: application/zip
-          # - os: windows-latest
           - os: windows-2022
             TARGET: windows
             CMD_BUILD: |
@@ -75,7 +66,6 @@ jobs:
               cd dist;
               7z a editor-windows.zip editor\;
             OUT_FILE_NAME: editor-windows.zip
-            # ASSET_MIME: application/vnd.microsoft.portable-executable
             ASSET_MIME: application/zip
     steps:
     - uses: actions/checkout@v1
