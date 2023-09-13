@@ -58,7 +58,7 @@ jobs:
             TARGET: windows
             CMD_BUILD: >
               python3 -m PyInstaller editor.py --noconsole --add-data "icons;icons" --name editor --noconfirm;
-              cd build;
+              cd dist;
               7z a editor-windows.zip editor
             OUT_FILE_NAME: editor-windows.zip
             ASSET_MIME: application/vnd.microsoft.portable-executable
