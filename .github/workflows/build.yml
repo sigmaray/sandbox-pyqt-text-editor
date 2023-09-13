@@ -42,9 +42,7 @@ jobs:
             CMD_BUILD: >
                 python3 -m PyInstaller editor.py --noconsole --add-data "icons:icons" --name editor --noconfirm &&
                 cd dist/ &&
-                zip -r9 editor-linux editor/ &&
-                cd .. &&
-                rm -rf build/editor dist/editor
+                zip -r9 editor-linux editor/
             OUT_FILE_NAME: editor-linux.zip
             ASSET_MIME: application/zip
           - os: macos-12
@@ -52,9 +50,7 @@ jobs:
             CMD_BUILD: >
                 python3 -m PyInstaller editor.py --noconsole --add-data "icons:icons" --name editor --noconfirm &&
                 cd dist/ &&
-                zip -r9 editor-osx editor/ &&
-                cd .. &&
-                rm -rf build/editor dist/editor
+                zip -r9 editor-osx editor/
             OUT_FILE_NAME: editor-osx.zip
             ASSET_MIME: application/zip
           - os: windows-2022
