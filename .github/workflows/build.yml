@@ -75,7 +75,7 @@ jobs:
               cd dist;
               7z a editor-windows.zip editor\;
               cd ..;
-              rmdir build\editor dist\editor /Q /S
+              rmdir /Q /S build\editor dist\editor
             OUT_FILE_NAME: editor-windows.zip
             # ASSET_MIME: application/vnd.microsoft.portable-executable
             ASSET_MIME: application/zip
